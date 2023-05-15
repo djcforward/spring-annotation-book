@@ -15,7 +15,10 @@
  */
 package io.binghe.spring.annotation.chapter05;
 
-import io.binghe.spring.annotation.chapter05.config.ImportConfig;
+import io.binghe.spring.annotation.chapter05.config.ImportBeanConfig;
+import io.binghe.spring.annotation.chapter05.config.ImportBeanDefinitionRegistrarConfig;
+import io.binghe.spring.annotation.chapter05.config.ImportSelectorConfig;
+import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.Arrays;
@@ -29,7 +32,29 @@ import java.util.Arrays;
  */
 public class ImportTest {
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ImportConfig.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ImportBeanConfig.class);
+        String[] definitionNames = context.getBeanDefinitionNames();
+        Arrays.stream(definitionNames).forEach((definitionName) -> System.out.println(definitionName));
+    }
+
+    /**
+     * @author LittleDu
+     * @description 测试实现ImportSelector接口的类
+     */
+    @Test
+    public void testImportSelector(){
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ImportSelectorConfig.class);
+        String[] definitionNames = context.getBeanDefinitionNames();
+        Arrays.stream(definitionNames).forEach((definitionName) -> System.out.println(definitionName));
+    }
+
+    /**
+     * @author LittleDu
+     * @description 测试实现ImportSelector接口的类
+     */
+    @Test
+    public void testImportBeanDefinitionRegistrar(){
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ImportBeanDefinitionRegistrarConfig.class);
         String[] definitionNames = context.getBeanDefinitionNames();
         Arrays.stream(definitionNames).forEach((definitionName) -> System.out.println(definitionName));
     }

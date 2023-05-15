@@ -16,6 +16,8 @@
 package io.binghe.spring.annotation.chapter03.componentscan;
 
 import io.binghe.spring.annotation.chapter03.componentscan.config.ComponentScanConfig;
+import io.binghe.spring.annotation.chapter03.componentscan.config.TestComponentScanConfig;
+import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.Arrays;
@@ -29,6 +31,27 @@ public class ComponentScanTest {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ComponentScanConfig.class);
         String[] names = context.getBeanDefinitionNames();
+
         Arrays.stream(names).forEach(System.out::println);
     }
+
+    /**
+     * @author LittleDu
+     * @description 测试配置类上加不加@ComponentScan，哪些Bean会被注册哪些不会
+     *
+     * 结论：
+     *  存在@ComponentScan会注册对应包下的Bean、配置类、配置类里@Bean的方法对应的Bean
+     *  不存在@ComponentScan只会配置类 及 配置类里@Bean的方法对应的Bean
+     *
+     * 原因：doProcessConfigurationClass.doProcessConfigurationClass()里面对于@Component
+     *      有专门的处理，有这个注解才会去扫描，源码分析请看spring-framework-6.0.4
+     */
+    @Test
+    public void test() {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(TestComponentScanConfig.class);
+        String[] names = context.getBeanDefinitionNames();
+
+        Arrays.stream(names).forEach(System.out::println);
+    }
+
 }

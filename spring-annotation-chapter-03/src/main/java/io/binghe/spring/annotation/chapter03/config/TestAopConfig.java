@@ -13,33 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.binghe.spring.annotation.chapter03.bean;
+package io.binghe.spring.annotation.chapter03.config;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
- * @author binghe(公众号 : 冰河技术)
+ * @author LittleDu
  * @version 1.0.0
- * @description 注入到IOC容器中的类
+ * @description 测试切面的配置类
  */
+@Configuration
+@ComponentScan(basePackages = "io.binghe.spring.annotation.chapter03")
+@EnableAspectJAutoProxy
+public class TestAopConfig {
 
-@Component
-public class User {
 
-    private final Logger logger = LoggerFactory.getLogger(User.class);
 
-    public User(){
-        logger.info("执行构造方法...");
-    }
-
-    public void init(){
-        logger.info("执行初始化方法...");
-    }
-
-    public void destroy(){
-        logger.info("执行销毁方法...");
-    }
 
 }

@@ -23,9 +23,11 @@ import org.springframework.core.type.filter.TypeFilter;
 import java.io.IOException;
 
 /**
- * @author binghe(公众号: 冰河技术)
- * @version 1.0.0
+ * @author djc
+ * @version 1.0.1
  * @description 自定义过滤规则
+ * className.contains("componentScanConfig") || className.contains("NoComponentScanBean");
+ * match()返回true表示当前扫描的类符合过滤规则，可以注入IOC
  */
 public class ComponentScanFilter implements TypeFilter {
     @Override
@@ -34,6 +36,7 @@ public class ComponentScanFilter implements TypeFilter {
         ClassMetadata classMetadata = metadataReader.getClassMetadata();
         //获取当前正在扫描的类名
         String className = classMetadata.getClassName();
-        return className.contains("componentScanConfig");
+        System.out.println(className);
+        return className.contains("componentScanConfig") || className.contains("NoComponentScanBean");
     }
 }

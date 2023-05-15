@@ -13,33 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.binghe.spring.annotation.chapter03.bean;
+package io.binghe.spring.annotation.chapter03.componentscan.config;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
+import io.binghe.spring.annotation.chapter03.componentscan.Bean.NoAnnotationBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 /**
- * @author binghe(公众号 : 冰河技术)
+ * @author LittleDu
  * @version 1.0.0
- * @description 注入到IOC容器中的类
+ * @description 测试@ComponentScan是否能注入
+ *
+ * 设置自定义扫描规则
  */
+@Configuration
+@ComponentScan(basePackages = "io.binghe.spring.annotation.chapter03")
+public class TestComponentScanConfig {
 
-@Component
-public class User {
-
-    private final Logger logger = LoggerFactory.getLogger(User.class);
-
-    public User(){
-        logger.info("执行构造方法...");
+    @Bean
+    public NoAnnotationBean noAnnotationBean(){
+        return new NoAnnotationBean();
     }
-
-    public void init(){
-        logger.info("执行初始化方法...");
-    }
-
-    public void destroy(){
-        logger.info("执行销毁方法...");
-    }
-
 }

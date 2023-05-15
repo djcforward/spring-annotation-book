@@ -13,33 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.binghe.spring.annotation.chapter03.bean;
+package io.binghe.spring.annotation.chapter05.config;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
+import io.binghe.spring.annotation.chapter05.bean.User;
+import io.binghe.spring.annotation.chapter05.registrar.MyImportBeanDefinitionRegistrar;
+import io.binghe.spring.annotation.chapter05.selector.MyImportSelector;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 /**
- * @author binghe(公众号 : 冰河技术)
- * @version 1.0.0
- * @description 注入到IOC容器中的类
+ * @author LittleDu
+ * @description 测试引入Bean
  */
-
-@Component
-public class User {
-
-    private final Logger logger = LoggerFactory.getLogger(User.class);
-
-    public User(){
-        logger.info("执行构造方法...");
-    }
-
-    public void init(){
-        logger.info("执行初始化方法...");
-    }
-
-    public void destroy(){
-        logger.info("执行销毁方法...");
-    }
-
+@Import(value = {User.class})
+@Configuration
+public class ImportBeanConfig {
 }

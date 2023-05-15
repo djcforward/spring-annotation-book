@@ -16,7 +16,10 @@
 package io.binghe.spring.annotation.chapter03;
 
 import io.binghe.spring.annotation.chapter03.bean.User;
+import io.binghe.spring.annotation.chapter03.bean.User2;
 import io.binghe.spring.annotation.chapter03.config.BeanConfig;
+import io.binghe.spring.annotation.chapter03.config.TestAopConfig;
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -31,9 +34,22 @@ public class BeanTest {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(BeanConfig.class);
         LOGGER.info("IOC容器启动完成....");
-        User user1 = context.getBean(User.class);
-        User user2 = context.getBean(User.class);
+        User2 user1 = context.getBean(User2.class);
+        User2 user2 = context.getBean(User2.class);
         LOGGER.info("user1是否等于user2===>>>{}", (user1 == user2));
         context.close();
+    }
+
+    /**
+     * @author LittleDU
+     * @description 测试切面是否拦截到
+     */
+    @Test
+    public void test(){
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(TestAopConfig.class);
+
+        LOGGER.info("IOC容器启动完成....");
+        User2 user = context.getBean(User2.class);
+        user.testAspect();
     }
 }

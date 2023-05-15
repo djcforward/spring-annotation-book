@@ -20,26 +20,21 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
- * @author binghe(公众号 : 冰河技术)
+ * @author LitteDU
  * @version 1.0.0
- * @description 注入到IOC容器中的类
+ * @description 测试代理对象是怎么生成的
  */
-
 @Component
-public class User {
+public class User2 {
 
-    private final Logger logger = LoggerFactory.getLogger(User.class);
+    private final Logger logger = LoggerFactory.getLogger(User2.class);
 
-    public User(){
+    public User2(){
         logger.info("执行构造方法...");
     }
 
-    public void init(){
-        logger.info("执行初始化方法...");
-    }
-
-    public void destroy(){
-        logger.info("执行销毁方法...");
+    public void testAspect(){
+        System.out.println("testAspect----------");
     }
 
 }

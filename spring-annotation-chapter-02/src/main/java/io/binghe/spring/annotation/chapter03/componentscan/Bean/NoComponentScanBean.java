@@ -13,22 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.binghe.spring.annotation.chapter05.config;
+package io.binghe.spring.annotation.chapter03.componentscan.Bean;
 
-import io.binghe.spring.annotation.chapter05.bean.User;
-import io.binghe.spring.annotation.chapter05.registrar.MyImportBeanDefinitionRegistrar;
-import io.binghe.spring.annotation.chapter05.selector.MyImportSelector;
+import io.binghe.spring.annotation.chapter03.componentscan.filter.ComponentScanFilter;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.stereotype.Component;
 
 /**
- * @author binghe(微信 : hacker_binghe)
- * @version 1.0.0
- * @description 测试@Import注解的配置类
- * @github https://github.com/binghe001
- * @copyright 公众号: 冰河技术
+ * @author djc
+ * @description 测试自定义过滤规则是否会将当前这个Bean注入
  */
-@Import(value = {User.class, MyImportSelector.class, MyImportBeanDefinitionRegistrar.class})
-@Configuration
-public class ImportConfig {
+@Component
+public class NoComponentScanBean {
 }

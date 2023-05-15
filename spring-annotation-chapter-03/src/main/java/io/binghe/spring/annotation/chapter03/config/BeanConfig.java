@@ -16,8 +16,11 @@
 package io.binghe.spring.annotation.chapter03.config;
 
 import io.binghe.spring.annotation.chapter03.bean.User;
+import io.binghe.spring.annotation.chapter03.bean.User2;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
  * @author binghe(公众号 : 冰河技术)
@@ -31,4 +34,6 @@ public class BeanConfig {
     public User user(){
         return new User();
     }
+
+
 }
