@@ -17,6 +17,7 @@ package io.binghe.spring.annotation.chapter05;
 
 import io.binghe.spring.annotation.chapter05.config.ImportBeanConfig;
 import io.binghe.spring.annotation.chapter05.config.ImportBeanDefinitionRegistrarConfig;
+import io.binghe.spring.annotation.chapter05.config.ImportConfig;
 import io.binghe.spring.annotation.chapter05.config.ImportSelectorConfig;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -55,6 +56,17 @@ public class ImportTest {
     @Test
     public void testImportBeanDefinitionRegistrar(){
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ImportBeanDefinitionRegistrarConfig.class);
+        String[] definitionNames = context.getBeanDefinitionNames();
+        Arrays.stream(definitionNames).forEach((definitionName) -> System.out.println(definitionName));
+    }
+
+    /**
+     * @author LittleDu
+     * @description 测试引入三种类型的BEan
+     */
+    @Test
+    public void testImportConfig(){
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ImportConfig.class);
         String[] definitionNames = context.getBeanDefinitionNames();
         Arrays.stream(definitionNames).forEach((definitionName) -> System.out.println(definitionName));
     }
