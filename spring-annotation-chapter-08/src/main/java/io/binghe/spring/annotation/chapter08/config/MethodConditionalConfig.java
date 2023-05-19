@@ -18,17 +18,16 @@ package io.binghe.spring.annotation.chapter08.config;
 import io.binghe.spring.annotation.chapter08.bean.Founder;
 import io.binghe.spring.annotation.chapter08.condition.LinuxCondition;
 import io.binghe.spring.annotation.chapter08.condition.MacosCondition;
-import io.binghe.spring.annotation.chapter08.condition.WindowsCondition;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
-
+/**
+ * 测试标记在方法上
+ */
 @Configuration
-@PropertySource(value = "classpath:test.properties")
-@Conditional(value = {LinuxCondition.class})
-public class ConditionalConfig {
+public class MethodConditionalConfig {
 
     @Bean(name = "bill")
     @Conditional(value = {LinuxCondition.class})

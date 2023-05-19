@@ -15,8 +15,12 @@
  */
 package io.binghe.spring.annotation.chapter08;
 
+import io.binghe.spring.annotation.chapter08.config.ClassConditionalConfig;
 import io.binghe.spring.annotation.chapter08.config.ConditionalConfig;
+import io.binghe.spring.annotation.chapter08.config.MethodConditionalConfig;
+import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.core.env.ConfigurableEnvironment;
 
 import java.util.Arrays;
 
@@ -31,6 +35,21 @@ public class ConditionalTest {
 
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ConditionalConfig.class);
+        String[] definitionNames = context.getBeanDefinitionNames();
+        Arrays.stream(definitionNames).forEach((definitionName) -> System.out.println(definitionName));
+
+    }
+
+    @Test
+    public void testMethodConditional(){
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MethodConditionalConfig.class);
+        String[] definitionNames = context.getBeanDefinitionNames();
+        Arrays.stream(definitionNames).forEach((definitionName) -> System.out.println(definitionName));
+    }
+
+    @Test
+    public void testClassConditional(){
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ClassConditionalConfig.class);
         String[] definitionNames = context.getBeanDefinitionNames();
         Arrays.stream(definitionNames).forEach((definitionName) -> System.out.println(definitionName));
     }

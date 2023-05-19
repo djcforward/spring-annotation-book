@@ -20,16 +20,13 @@ import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 
 /**
- * @author binghe(微信 : hacker_binghe)
- * @version 1.0.0
- * @description Windows
- * @github https://github.com/binghe001
- * @copyright 公众号: 冰河技术
+ * @author LittleDu
+ * @description Linux的用例
  */
-public class WindowsCondition implements Condition {
+public class LinuxCondition implements Condition {
     @Override
     public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
         String osName = context.getEnvironment().getProperty("os.name");
-        return osName.toLowerCase().contains("windwos");
+        return osName.toLowerCase().contains("linux");
     }
 }
