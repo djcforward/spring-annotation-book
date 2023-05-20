@@ -16,20 +16,15 @@
 package io.binghe.spring.annotation.chapter09;
 
 import io.binghe.spring.annotation.chapter09.bean.LazyBean;
+import io.binghe.spring.annotation.chapter09.config.LazyComponentConfig;
 import io.binghe.spring.annotation.chapter09.config.LazyConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-/**
- * @author binghe(微信 : hacker_binghe)
- * @version 1.0.0
- * @description @Lazy注解案例启动类
- * @github https://github.com/binghe001
- * @copyright 公众号: 冰河技术
- */
+
 public class LazyTest {
     public static void main(String[] args) {
         System.out.println("创建IOC容器开始...");
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(LazyConfig.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(LazyComponentConfig.class);
         System.out.println("创建IOC容器结束...");
         System.out.println("从IOC容器中获取Bean开始...");
         LazyBean lazyBean1 = context.getBean(LazyBean.class);
