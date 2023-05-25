@@ -41,7 +41,7 @@ public class ComponentScanTest {
      *
      * 结论：
      *  存在@ComponentScan会注册对应包下的Bean、配置类、配置类里@Bean的方法对应的Bean
-     *  不存在@ComponentScan只会配置类 及 配置类里@Bean的方法对应的Bean
+     *  不存在@ComponentScan只会注册配置类 及 配置类里@Bean的方法对应的Bean
      *
      * 原因：doProcessConfigurationClass.doProcessConfigurationClass()里面对于@Component
      *      有专门的处理，有这个注解才会去扫描，源码分析请看spring-framework-6.0.4

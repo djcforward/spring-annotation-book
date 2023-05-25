@@ -16,6 +16,8 @@
 package io.binghe.spring.annotation.chapter10;
 
 import io.binghe.spring.annotation.chapter10.config.ComponentConfig;
+import io.binghe.spring.annotation.chapter10.config.ComponentScanConfig;
+import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.Arrays;
@@ -29,6 +31,14 @@ import java.util.Arrays;
  */
 public class ComponentTest {
     public static void main(String[] args) {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ComponentScanConfig.class);
+        String[] definitionNames = context.getBeanDefinitionNames();
+        Arrays.stream(definitionNames).forEach((definitionName) -> System.out.println(definitionName));
+    }
+
+    //测试如何处理内部类的
+    @Test
+    public void testNestedBean(){
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ComponentConfig.class);
         String[] definitionNames = context.getBeanDefinitionNames();
         Arrays.stream(definitionNames).forEach((definitionName) -> System.out.println(definitionName));

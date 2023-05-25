@@ -22,39 +22,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 /**
- * @author binghe(微信 : hacker_binghe)
+ * @author LittleDu
  * @version 1.0.0
- * @description @Profile注解案例的配置类
+ * @description 测试@Profile标注在配置类上，当前不是这个环境，他里面的BeanMethod会不会生效
  * @github https://github.com/binghe001
- * @copyright 公众号: 冰河技术
  */
-//@Profile("prod")
+@Profile("prod")
 @Configuration
-public class ProfileConfig {
-
-    @Profile("dev")
-    @Bean("profileBeanDev")
-    public ProfileBean profileBeanDev(){
-        return new ProfileBean("开发环境");
-    }
-
-    @Profile("test")
-    @Bean("profileBeanTest")
-    public ProfileBean profileBeanTest(){
-        return new ProfileBean("测试环境");
-    }
-
-    @Profile("prod")
-    @Bean("profileBeanProd")
-    public ProfileBean profileBeanProd(){
-        return new ProfileBean("生产环境");
-    }
-
-    @Profile("default")
-    @Bean("profileBeanDefault")
-    public ProfileBean profileBeanDefault(){
-        return new ProfileBean("默认环境");
-    }
+public class ProfileClassConfig {
 
     @Bean("NoprofileBeanDefault")
     public NoProfileBean profileBean(){

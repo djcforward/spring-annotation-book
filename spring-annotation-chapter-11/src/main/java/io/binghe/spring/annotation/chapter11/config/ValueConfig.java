@@ -53,6 +53,7 @@ public class ValueConfig {
 
     /**
      * 注入其他Bean的属性
+     * todo 是怎么拿到其他Bean的属性的，加载顺序是怎样的
      */
     @Value("#{valueName.name}")
     private String name;

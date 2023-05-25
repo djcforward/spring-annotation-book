@@ -13,27 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.binghe.spring.annotation.chapter17.config;
+package io.binghe.spring.annotation.chapter10.config;
 
-import io.binghe.spring.annotation.chapter17.bean.ScopeBean;
-import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
 
 /**
  * @author binghe(微信 : hacker_binghe)
  * @version 1.0.0
- * @description @Scope注解的配置类
+ * @description @Component注解配置类
  * @github https://github.com/binghe001
  * @copyright 公众号: 冰河技术
  */
-@Configuration
-public class ScopeConfig {
-
-    @Bean
-    @Scope(value = "singleton")
-//    @Scope(value = "prototype")
-    public ScopeBean scopeBean(){
-        return new ScopeBean();
-    }
+//@Configuration
+//@ComponentScan(value = {"io.binghe.spring.annotation.chapter10"})
+public class ComponentScanConfig {
 }
