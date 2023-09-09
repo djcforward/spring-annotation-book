@@ -31,6 +31,7 @@ public class ProxyCircularBeanA {
     @Autowired
     private ProxyCircularBeanB proxyCircularBeanB;
 
+    //标注了@Async时，调用getProxyCircularBeanB()会产生代理对象
     @Async
     public ProxyCircularBeanB getProxyCircularBeanB() {
         return proxyCircularBeanB;

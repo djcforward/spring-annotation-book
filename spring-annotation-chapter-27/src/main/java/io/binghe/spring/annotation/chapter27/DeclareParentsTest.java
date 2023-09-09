@@ -18,6 +18,7 @@ package io.binghe.spring.annotation.chapter27;
 import io.binghe.spring.annotation.chapter27.bean.DeclareParentsBean;
 import io.binghe.spring.annotation.chapter27.config.DeclareParentsConfig;
 import io.binghe.spring.annotation.chapter27.service.DeclareParentsService;
+import io.binghe.spring.annotation.chapter27.service.NewDeclareParentsService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
@@ -33,12 +34,12 @@ public class DeclareParentsTest {
         DeclareParentsService declareParentsService = context.getBean(DeclareParentsService.class);
 
         DeclareParentsBean declareParentsBean = new DeclareParentsBean(DeclareParentsBean.NAME);
-//        NewDeclareParentsService newDeclareParentsService = (NewDeclareParentsService) declareParentsService;
-//        if (!newDeclareParentsService.validate(declareParentsBean)){
-//            throw new IllegalStateException("参数不合法...");
-//        }
-//
-//        System.out.println("参数合法，执行保存操作...");
+        NewDeclareParentsService newDeclareParentsService = (NewDeclareParentsService) declareParentsService;
+        if (!newDeclareParentsService.validate(declareParentsBean)){
+            throw new IllegalStateException("参数不合法...");
+        }
+
+        System.out.println("参数合法，执行保存操作...");
         declareParentsService.saveAndUpdateDeclareParents(declareParentsBean);
 
         System.out.println("整个过程执行完毕...");

@@ -43,6 +43,7 @@ public class EnableLoadTimeWeavingAspect {
             return pjp.proceed();
         } finally {
             sw.stop();
+            System.out.println("123333333333");
             System.out.println(sw.prettyPrint());
         }
     }

@@ -13,27 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.binghe.spring.annotation.chapter22;
+package io.binghe.spring.annotation.chapter01.configuration;
 
-import io.binghe.spring.annotation.chapter22.bean.AspectBean;
-import io.binghe.spring.annotation.chapter22.config.AspectConfig;
-import io.binghe.spring.annotation.chapter22.service.AspectService;
+import io.binghe.spring.annotation.chapter01.configuration.bean.TestFb;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-/**
- * @author binghe(微信 : hacker_binghe)
- * @version 1.0.0
- * @description 切面型注解测试类
- * @github https://github.com/binghe001
- * @copyright 公众号: 冰河技术
- */
-public class AspectTest {
 
+public class ConfigurationAnnotationTest {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ConfigurationAnnotationTest.class);
 
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AspectConfig.class);
-        AspectService aspectService = context.getBean(AspectService.class);
-        aspectService.saveOrUpdateAspectBean(new AspectBean());
-        context.close();
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("io.binghe.spring.annotation.chapter01.configuration");
+//        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ConfigurationAnnotationConfig.class);
+        TestFb bean = context.getBean(TestFb.class);
+        bean.dosomething();
     }
 }

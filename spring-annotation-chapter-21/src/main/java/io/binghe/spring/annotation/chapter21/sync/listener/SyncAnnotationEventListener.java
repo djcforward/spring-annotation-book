@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author binghe(微信 : hacker_binghe)
  * @version 1.0.0
- * @description 同步事件监听
+ * @description 使用@EventListener进行同步事件监听
  * @github https://github.com/binghe001
  * @copyright 公众号: 冰河技术
  */
